@@ -8,15 +8,84 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $message = $_POST['message'];
 
+    $data = "
+
+Name: $name
+Email: $email
+Message: $message
+
+------------------------
+
+";
+
+    file_put_contents(
+        "applications.txt",
+        $data,
+        FILE_APPEND
+    );
+
     echo "
 
-    <h1>Application Submitted Successfully</h1>
+    <html>
 
-    <h3>Name: $name</h3>
+    <head>
 
-    <h3>Email: $email</h3>
+        <title>Application Submitted</title>
 
-    <h3>Message: $message</h3>
+        <style>
+
+            body{
+
+                font-family:Arial;
+
+                text-align:center;
+
+                padding-top:100px;
+
+                background:#f4f4f4;
+            }
+
+            h1{
+
+                color:green;
+            }
+
+            a{
+
+                text-decoration:none;
+
+                color:white;
+
+                background:#0b1f3a;
+
+                padding:12px 25px;
+
+                border-radius:5px;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <h1>
+            Application Submitted Successfully
+        </h1>
+
+        <h2>
+            Thank You $name
+        </h2>
+
+        <br>
+
+        <a href='javascript:history.back()'>
+            Go Back
+        </a>
+
+    </body>
+
+    </html>
 
     ";
 
